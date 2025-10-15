@@ -712,7 +712,7 @@ ${conversationContext}
   });
 }
 
-export const runtime = "node";
+export const runtime = "nodejs";
 
 // 🤖 AI-powered intent detection for media requests
 async function detectMediaIntent(userText: string): Promise<{ imageRequested: boolean; videoRequested: boolean; imageOnly: boolean; videoOnly: boolean }> {
