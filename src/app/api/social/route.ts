@@ -22,8 +22,7 @@ type Incoming = {
   action?: 'confirm' | 'regenerate' | 'cancel';
 };
 
-const GEMINI_API_KEY =
-  process.env.GEMINI_API_KEY || "AIzaSyCDSQvs_QC5EK6bEwWT2v-xN9eKrsPg_9M";
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "AIzaSyCDSQvs_QC5EK6bEwWT2v-xN9eKrsPg_9M";
 
 const GEMINI_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${GEMINI_API_KEY}`;
 
