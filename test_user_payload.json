@@ -1,0 +1,9 @@
+{
+  "sessionId": "test_user_session",
+  "messages": [
+    {
+      "role": "user",
+      "content": "create a Facebook post about technology"
+    }
+  ]
+}
