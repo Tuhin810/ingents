@@ -6,6 +6,12 @@ export function middleware(req: NextRequest) {
   console.log("🌐 Host:", req.headers.get("host"));
   console.log("🍪 All Cookies:", req.cookies.getAll());
 
+  // Skip authentication for public routes
+  const publicRoutes = ["/login", "/signup", "/auth/login", "/auth/signup"];
+  if (publicRoutes.includes(req.nextUrl.pathname)) {
+    return NextResponse.next();
+  }
+
   const token = req.cookies.get("token")?.value;
 
   if (!token) {
@@ -14,12 +20,14 @@ export function middleware(req: NextRequest) {
   }
 
   if(req.nextUrl.pathname === "/" && token) {
-    return NextResponse.redirect(new URL("/dashboard", req.url));
+    return NextResponse.redirect(new URL("/ingents/dashboard", req.url));
   }
 
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/"], // Ensure this matches the route correctly
+  matcher: [
+    "/((?!api|_next/static|_next/image|favicon.ico|login|signup|auth).*)"
+  ],
 };
